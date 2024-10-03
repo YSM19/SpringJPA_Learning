@@ -1,24 +1,25 @@
 package Spring.JPA;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 public class Item {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
 
     private String name; //이름
     private int price; //가격
     private int stockQuantity; //재고수량
+
+    @ManyToMany(mappedBy = "item")
+    private List<Category> categories = new ArrayList<>();
 
 }
