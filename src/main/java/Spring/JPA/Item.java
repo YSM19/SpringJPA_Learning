@@ -9,7 +9,9 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
+public abstract class Item {
 
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
@@ -19,7 +21,7 @@ public class Item {
     private int price; //가격
     private int stockQuantity; //재고수량
 
-    @ManyToMany(mappedBy = "item")
+    @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
 }

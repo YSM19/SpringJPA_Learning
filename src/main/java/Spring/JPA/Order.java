@@ -10,8 +10,8 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-@Table(name = "ORDER_ID")
-public class Order {
+@Table(name = "ORDERS")
+public class Order extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
